@@ -40,6 +40,7 @@ PRODUCT_PACKAGES += \
 # Recovery specific copy files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6765.rc:root/init.recovery.mt6765.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.usb.rc:root/init.recovery.usb.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6765.rc:root/ueventd.mt6765.rc
 
 # Shipping API level
