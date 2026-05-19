@@ -1,10 +1,16 @@
 import /init.recovery.usb.rc
 
 on fs
+
     symlink /system_root/system /system
     symlink /dev/block/platform/bootdevice/by-name /dev/block/by-name
     
     write /sys/class/power_supply/usb/otg_switch 1
+    
+on early-init
+
+    start hwservicemanager
+    start servicemanager
 
 on init
 
@@ -15,7 +21,20 @@ on init
     write /sys/class/graphics/fb0/blank 0
     
 on post-fs
+
     symlink /dev/block/sda /dev/block/mmcblk0boot0
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+
+service hwservicemanager /sbin/hwservicemanager
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service servicemanager /sbin/servicemanager
+    user root
+    group root readproc
+    disabled
+    seclabel u:r:recovery:s0
