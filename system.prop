@@ -30,3 +30,9 @@ vendor.rild.libpath=mtk-ril.so
 wifi.direct.interface=p2p0
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
+
+# For secure ADB in Recovery
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
+persist.sys.usb.config=adb
