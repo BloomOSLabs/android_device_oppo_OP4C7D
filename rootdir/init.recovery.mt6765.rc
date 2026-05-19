@@ -19,19 +19,3 @@ on post-fs
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
-    
-service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-on property:sys.boot_completed=0
-    start gatekeeper-1-0
-    start keymaster-3-0

@@ -42,15 +42,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6765.rc:root/init.recovery.mt6765.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.usb.rc:root/init.recovery.usb.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6765.rc:root/ueventd.mt6765.rc \
-    $(LOCAL_PATH)/rootdir/vendor/lib64/libkeymaster3device.so:root/vendor/lib64/libkeymaster3device.so \
-    $(LOCAL_PATH)/rootdir/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so:root/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so \
-    $(LOCAL_PATH)/rootdir/vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:root/vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so \
-    $(LOCAL_PATH)/rootdir/vendor/lib64/hw/gatekeeper.mt6765.so:root/vendor/lib64/hw/gatekeeper.mt6765.so \
-    $(LOCAL_PATH)/rootdir/vendor/lib64/hw/keystore.mt6765.so:root/vendor/lib64/hw/keystore.mt6765.so \
-    $(LOCAL_PATH)/recovery/root/sbin/libTEECommon.so:root/sbin/libTEECommon.so \
-    $(LOCAL_PATH)/recovery/root/sbin/libpuresoftkeymasterdevice.so:root/sbin/libpuresoftkeymasterdevice.so \
-    $(LOCAL_PATH)/recovery/root/sbin/android.hardware.gatekeeper@1.0-service:root/sbin/android.hardware.gatekeeper@1.0-service \
-    $(LOCAL_PATH)/recovery/root/sbin/android.hardware.keymaster@3.0-service:root/sbin/android.hardware.keymaster@3.0-service
+    vendor/oppo/OP4C7D/proprietary/lib64/libkeymaster3device.so:root/vendor/lib64/libkeymaster3device.so \
+    vendor/oppo/OP4C7D/proprietary/lib64/libTEECommon.so:root/vendor/lib64/libTEECommon.so \
+    vendor/oppo/OP4C7D/proprietary/lib64/hw/gatekeeper.mt6765.so:root/vendor/lib64/hw/gatekeeper.mt6765.so \
+    vendor/oppo/OP4C7D/proprietary/lib64/hw/keystore.mt6765.so:root/vendor/lib64/hw/keystore.mt6765.so \
+    vendor/oppo/OP4C7D/proprietary/lib64/libMcGatekeeper.so:root/vendor/lib64/libMcGatekeeper.so \
+    vendor/oppo/OP4C7D/proprietary/lib64/libMcTeeKeymaster.so:root/vendor/lib64/libMcTeeKeymaster.so
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 28
