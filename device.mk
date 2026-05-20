@@ -37,20 +37,12 @@ PRODUCT_PACKAGES += \
     meta_init.rc \
     multi_init.rc
 
-# Recovery specific copy files
+# Recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6765.rc:root/init.recovery.mt6765.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.usb.rc:root/init.recovery.usb.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6765.rc:root/ueventd.mt6765.rc \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/libkeymaster3device.so:recovery/root/vendor/lib64/libkeymaster3device.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/libTEECommon.so:recovery/root/vendor/lib64/libTEECommon.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/hw/gatekeeper.mt6765.so:recovery/root/vendor/lib64/hw/gatekeeper.mt6765.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/hw/keystore.mt6765.so:recovery/root/vendor/lib64/hw/keystore.mt6765.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64//hw/libMcGatekeeper.so:recovery/root/vendor/lib64/hw/libMcGatekeeper.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/hw/libMcTeeKeymaster.so:recovery/root/vendor/lib64/hw/libMcTeeKeymaster.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so:recovery/root/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so \
-    vendor/oppo/OP4C7D/proprietary/vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:recovery/root/vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor/app,root/vendor/app)
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root/vendor,root/vendor)
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 28
