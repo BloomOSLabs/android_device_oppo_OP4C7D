@@ -1,0 +1,8 @@
+on post-fs
+
+    symlink /mnt/vendor/nvcfg /vendor/nvcfg
+    symlink /mnt/vendor/nvdata /vendor/nvdata
+    symlink /mnt/vendor/persist /vendor/persist
+    symlink /mnt/vendor/protect_f /vendor/protect_f
+    symlink /mnt/vendor/protect_s /vendor/protect_s
+    symlink /mnt/vendor/opporeserve2 /vendor/opporeserve2
