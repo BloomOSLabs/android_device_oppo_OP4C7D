@@ -1,23 +1,5 @@
 # Unpinned blobs from full_oppo6765_19581-user 9 PPR1.180610.011 eng.root.20211115.152708 release-keys
 
-# Extras
-lib/libdrm.so
-lib64/libdrm.so
-lib/libtinycompress.so
-lib64/libtinycompress.so
-lib64/android.hidl.base@1.0.so
-
-# Kernel modules
-lib/modules/bt_drv.ko
-lib/modules/fmradio_drv.ko
-lib/modules/fpsgo.ko
-lib/modules/gps_drv.ko
-lib/modules/kneuron.ko
-lib/modules/met.ko
-lib/modules/wlan_drv_gen4m.ko
-lib/modules/wmt_chrdev_wifi.ko
-lib/modules/wmt_drv.ko
-
 # Audio
 lib/vndk-28/android.hardware.audio.common@2.0.so
 lib/vndk-28/android.hardware.audio.common@4.0.so
@@ -52,6 +34,7 @@ vendor/lib/libnvram.so
 vendor/lib/libnvram_platform.so
 vendor/lib/libnvram_sec.so
 vendor/lib/libreverb.so
+vendor/lib/libtinycompress.so
 vendor/lib/libtinyxml.so
 vendor/lib/vendor.mediatek.hardware.audio@4.1.so
 vendor/lib/vendor.mediatek.hardware.power@2.0.so
@@ -74,6 +57,7 @@ vendor/lib64/libnvram.so
 vendor/lib64/libnvram_platform.so
 vendor/lib64/libnvram_sec.so
 vendor/lib64/libreverb.so
+vendor/lib64/libtinycompress.so
 vendor/lib64/libtinyxml.so
 vendor/lib64/vendor.mediatek.hardware.audio@4.1.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so

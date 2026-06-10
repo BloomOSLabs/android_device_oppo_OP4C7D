@@ -14,6 +14,9 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from OP4C7D device
 $(call inherit-product, device/oppo/OP4C7D/device.mk)
 
+# Inherit some common Bloom stuff.
+$(call inherit-product, vendor/bloom/config/common.mk)
+
 PRODUCT_DEVICE := OP4C7D
 PRODUCT_NAME := lineage_OP4C7D
 PRODUCT_MANUFACTURER := oppo
@@ -23,3 +26,11 @@ PRODUCT_GMS_CLIENTID_BASE := android-oppo
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="full_oppo6765_19581-user 9 PPR1.180610.011 eng.root.20211115.152708 release-keys"
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.service.acm.enable=0 \
+    ro.mount.fs=EXT4 \
+    ro.vendor.rc=/vendor/etc/init/hw/ \
+    ro.oem_unlock_supported=1 \
+    camera.disable_zsl_mode=1 \
+    ro.logd.kernel=false
