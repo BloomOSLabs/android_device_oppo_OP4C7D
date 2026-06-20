@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2023 The LineageOS Project
+#           (C) 2026 The BloomOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -8,19 +9,19 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Bloom stuff.
+$(call inherit-product, vendor/bloom/config/common_full_phone.mk)
 
 # Inherit from OP4C7D device
 $(call inherit-product, device/oppo/OP4C7D/device.mk)
 
-# Inherit some common Bloom stuff.
-$(call inherit-product, vendor/bloom/config/common.mk)
-
 PRODUCT_DEVICE := OP4C7D
-PRODUCT_NAME := lineage_OP4C7D
+PRODUCT_NAME := bloom_OP4C7D
 PRODUCT_MANUFACTURER := oppo
 PRODUCT_BRAND := OPPO
+
+# RELEASE_TYPE
+RELEASE_TYPE := EXPERIMENTAL
 
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
 

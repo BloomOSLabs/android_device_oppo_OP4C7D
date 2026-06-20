@@ -5,7 +5,7 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service
 
 # Overlays
-# PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Product characteristics
 PRODUCT_CHARACTERISTICS := default

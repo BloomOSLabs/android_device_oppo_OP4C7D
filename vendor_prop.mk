@@ -119,6 +119,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.oppo.theme.version=6000 \
     ro.sf.hwrotation=0 \
+    ro.sf.lcd_density=320 \
     ro.sys.sdcardfs=1 \
     ro.telephony.default_network=9,9 \
     ro.telephony.sim.count=2 \
