@@ -56,6 +56,10 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.gatekeeper@1.0-impl
 
+# System priv-apps
+PRODUCT_PACKAGES += \
+    ImsService
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
@@ -63,6 +67,10 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Fingerprint
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+
+# Boot jars
+PRODUCT_BOOT_JARS += \
+    bloomos-mediatek
     
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 28

@@ -31,3 +31,5 @@ vendor.rild.libpath=mtk-ril.so
 wifi.direct.interface=p2p0
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
+
+persist.sys.bloom.max_brightness=2047
