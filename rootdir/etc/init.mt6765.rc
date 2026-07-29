@@ -1,14 +1,14 @@
 # MTK platform .rc configure
 
-import ${ro.vendor.rc}init.connectivity.rc
+import /vendor/etc/init/hw/init.connectivity.rc
 import /vendor/etc/init/hw/init.mt6765.usb.rc
 import /vendor/etc/init/hw/init.project.rc
 import /FWUpgradeInit.rc
 import /vendor/etc/init/hw/init.aee.rc
 import /system/etc/init/hw/init.aee.rc
-import ${ro.vendor.rc}init.volte.rc
-import ${ro.vendor.rc}init.mal.rc
-import ${ro.vendor.rc}init.sensor_1_0.rc
+import /vendor/etc/init/hw/init.volte.rc
+import /vendor/etc/init/hw/init.mal.rc
+import /vendor/etc/init/hw/init.sensor_1_0.rc
 
 #ifdef VENDOR_EDIT
 #Song.yao@BSP.Face.Basic 2019/10/17 Add for face
@@ -26,10 +26,12 @@ import /init.oppo.seccommon.rc
 #endif
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
-import ${ro.vendor.rc}init.modem.rc
+import /vendor/etc/init/hw/init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
 on early-init
+	setprop persist.debug.init_stage early_init
+	write /dev/.init_stage early
     write /proc/bootprof "INIT:early-init"
     # boot perf. tune
     write /proc/perfmgr/boost_ctrl/cpu_ctrl/boot_freq "0 0 5 0"
@@ -37,9 +39,13 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 on post-fs-data
+	setprop persist.debug.init_stage post_fs_data
+	write /data/init_stage post_fs_data
     mkdir /data/vendor/silead 0770 system system
 
 on init
+	setprop persist.debug.init_stage init
+	write /dev/.init_stage init
     # create io boost group
     mkdir /dev/stune/io
     chown root system /dev/stune/io
@@ -113,6 +119,7 @@ on late-init
 # mount different fs start
 
 on charger
+	setprop persist.debug.init_stage charger
     write /proc/hps/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -156,6 +163,8 @@ service swap_enable_init /system/bin/sh /system/etc/swap_enable.sh
 #endif
 
 on fs
+	setprop persist.debug.init_stage fs
+	write /dev/.init_stage fs
     write /proc/bootprof "INIT:Mount_START"
     write /sys/kernel/debug/tracing/trace_marker "B|1|Mount"
     #ifdef VENDOR_EDIT
@@ -177,17 +186,18 @@ on fs
 #endif
 
 on fs
+	setprop persist.debug.init_stage fss
 #ifdef VENDOR_EDIT
 #/* ChaoYing.Chen@BSP.Kernel.Boot, 2019/01/13, Add  for symlink persist to /vendor/persist */
-   chmod 0771 /persist
-   chown system system /persist
+    chmod 0771 /persist
+    chown system system /persist
 #endif
-   #ifndef VENDOR_EDIT
-   # Bin.Li@EXP.BSP.bootloader.bootflow, 2017/07/10, Modify DRIVER.ISO instead of iAmCdRom.iso
-   #mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
-   #else
-   mount iso9660 loop@/vendor/etc/DRIVER.ISO /mnt/cd-rom ro
-   #endif/*VENDOR_EDIT*/
+    #ifndef VENDOR_EDIT
+    # Bin.Li@EXP.BSP.bootloader.bootflow, 2017/07/10, Modify DRIVER.ISO instead of iAmCdRom.iso
+    #mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
+    #else
+    mount iso9660 loop@/vendor/etc/DRIVER.ISO /mnt/cd-rom ro
+    #endif/*VENDOR_EDIT*/
    
 #ifdef VENDOR_EDIT
 #huacai.zhou@bsp.drv modify for setting zram size according to totalram size
@@ -198,6 +208,7 @@ on fs
 #endif
 
 on post-fs
+	setprop persist.debug.init_stage post_fs
     write /proc/bootprof "INIT:post-fs"
 
     # boot perf. tune
@@ -244,6 +255,7 @@ on post-fs
     chmod 0770 /mnt/vendor/protect_s
 
 on post-fs-data
+	setprop persist.debug.init_stage post_fs_dataa
     write /proc/bootprof "INIT:post-fs-data"
 
     # boot time fs tune
@@ -698,6 +710,7 @@ on post-fs-data
 # -----------------------
 
 on boot
+	setprop persist.debug.init_stage boot
     write /proc/bootprof "INIT:boot"
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
@@ -1113,6 +1126,7 @@ on property:persist.vendor.mediatek.fg.log.enable=1
     write /proc/sys/kernel/printk 8
 
 on boot
+	setprop persist.debug.init_stage boott
 
 #ifdef VENDOR_EDIV
 #shiguang.han@Swdp.shanghai, 2017/5/23 Add for elsa
@@ -1166,7 +1180,7 @@ service mbimd /vendor/bin/mbimd debug
 # add meta_tst for ATM
 service meta_tst /vendor/bin/meta_tst
     class main
-    user radio gps system wifi
+    user radio
     group radio gps system wifi audio bluetooth media
     disabled
     oneshot
@@ -1205,6 +1219,7 @@ on post-fs-data
 
 # FPSGO FBT Game
 on init
+	setprop persist.debug.init_stage initt
     insmod /vendor/lib/modules/fpsgo.ko
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
